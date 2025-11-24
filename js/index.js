@@ -262,19 +262,19 @@ searchletter.addEventListener('keyup', () => {
     if(query !== '') searchByLatter(query);
 });
 async function searchByName(name) {
-            document.getElementById('loading').classList.replace('d-none','d-flex')
 
    var res= await fetch(`https:www.themealdb.com/api/json/v1/1/search.php?s=${name}`)
    var data= await res.json();
    let meals = data.meals; 
  displaySearchName(meals)
+
  }
  async function searchByLatter(letter) {
+
    var res= await fetch(`https:www.themealdb.com/api/json/v1/1/search.php?f=${letter}`)
    var data= await res.json();
    let meals = data.meals; 
  displaySearchName(meals)
-    document.getElementById('loading').classList.replace('d-flex','d-none')
 
 
  }
@@ -743,7 +743,7 @@ function validatInput(p_name) {
 }
 
 function checkAllInputs() {
-  let inputs = document.querySelectorAll('.i');  
+  let inputs = document.querySelectorAll('.s');  
   let allValid = true;
 
   inputs.forEach(input => {
