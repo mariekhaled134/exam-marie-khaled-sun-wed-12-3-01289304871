@@ -6,6 +6,7 @@ const navLinks = document.querySelector('.nav-links');
 const btnsearch=document.querySelector('.searchbtn')
 const home=document.querySelector('.home')
 const pagesearch=document.querySelector('.search')
+const pagesearchdet=document.querySelector('.searchname')
 const mealdetails=document.querySelector('.meal-details')
 const categorybtn=document.querySelector('.category-btn')
 const pagecategory=document.querySelector('.category')
@@ -62,7 +63,6 @@ btnsearch.addEventListener('click',function(){
 
         navLinks.classList.remove('open');
 });
-
 
 
 categorybtn.addEventListener('click',function(){
@@ -263,7 +263,8 @@ searchletter.addEventListener('keyup', () => {
 });
 async function searchByName(name) {
 
-   var res= await fetch(`https:www.themealdb.com/api/json/v1/1/search.php?s=${name}`)
+   var res= await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${name}`)
+
    var data= await res.json();
    let meals = data.meals; 
  displaySearchName(meals)
