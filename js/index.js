@@ -713,8 +713,8 @@ function getIngredients(meal) {
 // contact
 const submitBtn = document.getElementById('submitBtn');
 
-function validatInput(p_name) {
-  let regex = {
+function validateField(field) {
+  let regexPatterns = {
     inputName: /^[A-Za-z]{3,15}$/,
     inputemail: /^\w{1,10}@(gmail|yahoo|hotmail)\.(com|net)$/i,
     inputphone: /^01[0-9]{9}$/,
@@ -723,33 +723,33 @@ function validatInput(p_name) {
     inputrepassword: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,20}$/
   };
 
-  let box = document.getElementById(p_name.id + "Box");
+  let errorBox = document.getElementById(field.id + "Box");
 
-  if (regex[p_name.id].test(p_name.value)) {
-      box.classList.add('d-none');
+  if (regexPatterns[field.id].test(field.value)) {
+      errorBox.classList.add('d-none');
   } else {
-      box.classList.remove('d-none');
+      errorBox.classList.remove('d-none');
   }
 
-  if (p_name.id === "inputrepassword") {
+  if (field.id === "inputrepassword") {
       let password = document.getElementById("inputpassword").value;
-      if (p_name.value !== password) {
-          box.classList.remove('d-none');
+      if (field.value !== password) {
+          errorBox.classList.remove('d-none');
       } else {
-          box.classList.add('d-none');
+          errorBox.classList.add('d-none');
       }
   }
 
-  checkAllInputs();
+  updateSubmitButtonState();
 }
 
-function checkAllInputs() {
-  let inputs = document.querySelectorAll('.s');  
+function updateSubmitButtonState() {
+  let fields = document.querySelectorAll('.s');  
   let allValid = true;
 
-  inputs.forEach(input => {
-    let box = document.getElementById(input.id + "Box");
-    if (!box.classList.contains('d-none') || input.value === '') {
+  fields.forEach(field => {
+    let errorBox = document.getElementById(field.id + "Box");
+    if (!errorBox.classList.contains('d-none') || field.value === '') {
       allValid = false;
     }
   });

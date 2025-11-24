@@ -134,38 +134,49 @@
 
 
 
-
 <div class="container contact d-none d-flex justify-content-center align-items-center vh-100">
   <div class="row g-4 w-75" id="row-contact">
 
     <div class="col-md-6">
-      <input type="text" class="form-control i" id="inputName" placeholder="Enter your Name" onkeyup="validatInput(this)">
-      <div id="inputNameBox" class="text-danger d-none text-bg-danger rounded-3  m-2 text-white p-3">Special characters and numbers not allowed</div>
+      <input type="text" class="form-control s" id="inputName" placeholder="Enter your Name" onkeyup="validateField(this)">
+      <div id="inputNameBox" class="text-danger d-none text-bg-danger rounded-3 m-2 text-white p-3">
+        Special characters and numbers not allowed
+      </div>
     </div>
 
     <div class="col-md-6">
-      <input type="text" class="form-control s" id="inputemail" placeholder="Enter your Email" onkeyup="validatInput(this)">
-      <div id="inputemailBox" class="text-danger d-none text-bg-danger rounded-3  m-2 text-white p-3">Email not valid *exemple@yyy.zzz</div>
+      <input type="text" class="form-control s" id="inputemail" placeholder="Enter your Email" onkeyup="validateField(this)">
+      <div id="inputemailBox" class="text-danger d-none text-bg-danger rounded-3 m-2 text-white p-3">
+        Email not valid *example@yyy.zzz*
+      </div>
     </div>
 
     <div class="col-md-6">
-      <input type="text" class="form-control s" id="inputphone" placeholder="Enter your Phone" onkeyup="validatInput(this)">
-      <div id="inputphoneBox" class="text-danger d-none text-bg-danger rounded-3  m-2 text-white p-3">Enter valid Phone Number</div>
+      <input type="text" class="form-control s" id="inputphone" placeholder="Enter your Phone" onkeyup="validateField(this)">
+      <div id="inputphoneBox" class="text-danger d-none text-bg-danger rounded-3 m-2 text-white p-3">
+        Enter valid Phone Number
+      </div>
     </div>
 
     <div class="col-md-6">
-      <input type="number" class="form-control s" id="inputAge" placeholder="Enter your Age" onkeyup="validatInput(this)">
-      <div id="inputAgeBox" class="text-danger d-none text-bg-danger rounded-3  m-2 text-white p-3">Enter valid age</div>
+      <input type="number" class="form-control s" id="inputAge" placeholder="Enter your Age" onkeyup="validateField(this)">
+      <div id="inputAgeBox" class="text-danger d-none text-bg-danger rounded-3 m-2 text-white p-3">
+        Enter valid age
+      </div>
     </div>
 
     <div class="col-md-6">
-      <input type="password" class="form-control s" id="inputpassword" placeholder="Enter your Password" onkeyup="validatInput(this)">
-      <div id="inputpasswordBox" class="text-danger d-none text-bg-danger rounded-3  m-2 text-white p-3">Enter valid password *Minimum eight characters, at least one letter and one number:*</div>
+      <input type="password" class="form-control s" id="inputpassword" placeholder="Enter your Password" onkeyup="validateField(this)">
+      <div id="inputpasswordBox" class="text-danger d-none text-bg-danger rounded-3 m-2 text-white p-3">
+        Enter valid password *Minimum eight characters, at least one letter and one number*
+      </div>
     </div>
 
     <div class="col-md-6">
-      <input type="password" class="form-control s" id="inputrepassword" placeholder="Repassword" onkeyup="validatInput(this)">
-      <div id="inputrepasswordBox" class="text-danger d-none text-bg-danger rounded-3  m-2 text-white p-3">Enter valid repassword</div>
+      <input type="password" class="form-control s" id="inputrepassword" placeholder="Repassword" onkeyup="validateField(this)">
+      <div id="inputrepasswordBox" class="text-danger d-none text-bg-danger rounded-3 m-2 text-white p-3">
+        Passwords do not match
+      </div>
     </div>
 
     <div class="col-12 text-center">
