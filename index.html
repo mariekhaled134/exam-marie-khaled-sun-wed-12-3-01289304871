@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yummy</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+        <link rel="shortcut icon" href="./images/logo.png">
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/index.css">
+</head>
+<body>
+
+
+
+       <div class="loading d-none" id="loading"><span class="loader"></span> 
+        </div>
+
+<div class="side-nav bg-light position-fixed" id="sideMenu">
+    <div class="nav-logo p-3">
+        <img src="./images/logo.png" alt="logo-nav">
+    </div>
+
+<i class="fa-solid fa-bars  toggle-btn m-3 fs-1 text-dark "></i>
+<i class="fa-solid fa-xmark m-3 fs-1  x-btn d-none"></i>
+    <nav class="nav  flex-column d-flex bg-black position-fixed">
+        <div class="nav-links  ">
+        <a class="nav-link active searchbtn text-light"  href="#" >search</a>
+        <a class="nav-link category-btn text-light" href="#">cetagory</a>
+        <a class="nav-link area-btn text-light" href="#">area</a>
+        <a class="nav-link btn-ingred text-light" href="#">Ingredients</a>
+         <a class="nav-link btn-contact text-light" href="#">contact us</a></div>
+           <div class="nav-footer  text-light ">
+            <a href=""><i class="fa-brands fa-facebook "></i></a>
+            <a href=""><i class="fa-brands fa-twitter"></i></a>
+            <a href=""><i class="fa-solid fa-earth-americas"></i></a><p class="text-light">Copyright Â© 2019 All Rights Reserved.</p></div>
+   
+  
+           
+ </nav>
+  <div class="nav-btn  g-2">
+    <a href=""><i class="fa-solid fa-earth-americas text-dark"></i></a>
+    <a href=""><i class="fa-solid fa-share-nodes text-dark"></i></a>
+  </div>
+</div>
+       
+       
+<div class="home p-5 d-flex">
+    <div class="contanair">
+        <div class="row  text-light" id="rowData">
+   
+              
+                    </div>
+                </div>
+            </div>
+    
+
+
+
+<div class="meal-details d-none p-5">
+    <div class="row text-light  m-5" id="row-det" >
+       
+    </div>
+</div>
+<div class="search d-flex justify-content-center align-items-center w-75 mx-auto gap-4 d-none p-5">
+    <input type="text" class="form-control w-50" placeholder="Search By Name" id="search-name">
+    <input type="text" class="form-control w-50" placeholder="Search By First Letter" id="search-letter"maxlength="1">
+</div>
+
+<div class="searchname">
+    <div class="row" id="row-search"></div>
+</div>
+
+</div>
+
+
+<div class="category d-none">
+      <div class="contanair">
+    <div class="row" id="row-cat">
+    </div>
+
+    </div>
+</div>
+<div class="filter-categ d-none">
+    <div class="contanair">
+        <div class="row" id="row-filter"></div>
+    </div>
+</div>
+
+<div class="more-det d-none">
+    <div class="container">
+        <div class="row" id="row-det">
+        </div>
+    </div>
+</div>
+
+
+
+<div class="area d-none">
+    <div class="contanair">
+        <div class="row" id="row-area"></div>
+    </div>
+</div>
+
+<div class="getmealsarea d-none">
+    <div class="contanair">
+        <div class="row" id="row-get"></div>
+    </div>
+</div>
+
+<div class="moreinfo d-none">
+    <div class="contanair">
+        <div class="row" id="row-info"></div>
+    </div>
+</div>
+
+<div class="Ingredients-all d-none">
+      <div class="contanair">
+        <div class="row" id="row-inger"></div>
+    </div>
+</div>
+<div class="Ingredients-get d-none">
+      <div class="contanair">
+        <div class="row" id="row-ing-get"></div>
+    </div>
+</div>
+<div class="Ingredients-info d-none">
+     <div class="contanair">
+        <div class="row" id="ing-info"></div>
+    </div>
+</div>
+
+
+
+
+<div class="container contact d-none d-flex justify-content-center align-items-center vh-100">
+  <div class="row g-4 w-75" id="row-contact">
+
+    <div class="col-md-6">
+      <input type="text" class="form-control i" id="inputName" placeholder="Enter your Name" onkeyup="validatInput(this)">
+      <div id="inputNameBox" class="text-danger d-none text-bg-danger rounded-3  m-2 text-white p-3">Special characters and numbers not allowed</div>
+    </div>
+
+    <div class="col-md-6">
+      <input type="text" class="form-control i" id="inputemail" placeholder="Enter your Email" onkeyup="validatInput(this)">
+      <div id="inputemailBox" class="text-danger d-none text-bg-danger rounded-3  m-2 text-white p-3">Email not valid *exemple@yyy.zzz</div>
+    </div>
+
+    <div class="col-md-6">
+      <input type="text" class="form-control i" id="inputphone" placeholder="Enter your Phone" onkeyup="validatInput(this)">
+      <div id="inputphoneBox" class="text-danger d-none text-bg-danger rounded-3  m-2 text-white p-3">Enter valid Phone Number</div>
+    </div>
+
+    <div class="col-md-6">
+      <input type="number" class="form-control i" id="inputAge" placeholder="Enter your Age" onkeyup="validatInput(this)">
+      <div id="inputAgeBox" class="text-danger d-none text-bg-danger rounded-3  m-2 text-white p-3">Enter valid age</div>
+    </div>
+
+    <div class="col-md-6">
+      <input type="password" class="form-control i" id="inputpassword" placeholder="Enter your Password" onkeyup="validatInput(this)">
+      <div id="inputpasswordBox" class="text-danger d-none text-bg-danger rounded-3  m-2 text-white p-3">Enter valid password *Minimum eight characters, at least one letter and one number:*</div>
+    </div>
+
+    <div class="col-md-6">
+      <input type="password" class="form-control i" id="inputrepassword" placeholder="Repassword" onkeyup="validatInput(this)">
+      <div id="inputrepasswordBox" class="text-danger d-none text-bg-danger rounded-3  m-2 text-white p-3">Enter valid repassword</div>
+    </div>
+
+    <div class="col-12 text-center">
+      <button id="submitBtn" class="btn btn-outline-danger disabled" disabled>Submit</button>
+    </div>
+
+  </div>
+</div>
+
+
+
+
+
+
+
+
+<script src="./js/index.js"></script>
+    <script src="./js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
