@@ -140,6 +140,54 @@ pagecontact.classList.remove('d-none')
 
         navLinks.classList.remove('open');
 })
+
+// main function
+async function getMealDetails(mealID) {
+
+    document.getElementById('loading').classList.replace('d-none','d-flex');
+
+    var res = await fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealID}`);
+    var data = await res.json();
+    let meal = data.meals[0];
+
+    let pages = [
+        '.home',
+        '.search',
+        '.searchname',
+        '.search-det',
+        '.category',
+        '.filter-categ',
+        '.area',
+        '.getmealsarea',
+        '.moreinfo',
+        '.Ingredients-all',
+        '.Ingredients-get',
+        '.Ingredients-info'
+    ];
+
+    pages.forEach(p => {
+        let el = document.querySelector(p);
+        if (el) el.classList.add('d-none');
+    });
+
+    document.querySelector('.meal-details').classList.remove('d-none');
+
+    displayMealDetails(meal);
+
+    document.getElementById('loading').classList.replace('d-flex','d-none');
+}
+
+
+
+
+
+
+
+
+
+
+
+
 // home all meals
 
 async function getAllmeals() {
@@ -179,17 +227,6 @@ async function displayFood(meals) {
 
 
  
- async function getMealDetails(mealID) {
-        document.getElementById('loading').classList.replace('d-none','d-flex')
-
-       var res = await fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealID}`);
-    var data = await res.json();
-    let meal = data.meals[0];
-displayMealDetails(meal)
-   document.getElementById('loading').classList.replace('d-flex','d-none')
-
-}
-
 
 async function displayMealDetails(meal){
     document.querySelector('.home').classList.add('d-none')
@@ -299,6 +336,8 @@ document.getElementById('row-search').innerHTML=cartona
 
 }
 
+
+
 // category
 
 async function viewCategory() {
@@ -374,22 +413,13 @@ function displayMealBycate(meals){
  document.getElementById('row-filter').innerHTML = cartona;
 }
 
-     
-async function getMealDetails(mealID) {
-                    document.getElementById('loading').classList.replace('d-none','d-flex')
 
-       var res = await fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealID}`);
-    var data = await res.json();
-    let meal = data.meals[0];
-displayMealDetails(meal)
-    document.getElementById('loading').classList.replace('d-flex','d-none')
-
-}
 
 
 async function displayMealDetails(meal) {
     document.querySelector('.filter-categ').classList.add('d-none');
     document.querySelector('.meal-details').classList.remove('d-none');
+    
 
     let cartona = `
     <div class="col-md-4">
@@ -412,8 +442,8 @@ async function displayMealDetails(meal) {
             </ul>
             <h1>Tags:</h1>
             <ul class="tags">
-                ${meal.strSource ? `<li><a href="${meal.strSource}" target="_blank">Source</a></li>` : ''}
-                ${meal.strYoutube ? `<li><a href="${meal.strYoutube}" target="_blank">Youtube</a></li>` : ''}
+                ${meal.strSource ? `<li><a href="${meal.strSource}" target="_blank" class="source">Source</a></li>` : ''}
+                ${meal.strYoutube ? `<li><a href="${meal.strYoutube}" target="_blank" class="yout">Youtube</a></li>` : ''}
             </ul>
         </div>
     </div>
@@ -485,7 +515,8 @@ async function filterByArea(area) {
     var data = await res.json();
     var meals = data.meals;
    displayMeals(meals)
-  
+      document.getElementById('loading').classList.replace('d-flex','d-none')
+
   
    
 }
@@ -499,7 +530,7 @@ function displayMeals(meals) {
         cartona += `
         <div class="col-md-3 col-sm-6 mb-4">
             <div class="outer">
-                <div onclick="infoMealArea('${meal.idMeal}')" class="inner-food rounded-3">
+                <div onclick="getMealDetails('${meal.idMeal}')" class="inner-food rounded-3">
                     <img src="${meal.strMealThumb}" alt="${meal.strMeal}" class="w-100">
                     <div class="inner-caption text-dark">
                         <h2>${meal.strMeal}</h2>
@@ -515,16 +546,6 @@ function displayMeals(meals) {
 
 
 
-async function infoMealArea(mealID) {
-                    document.getElementById('loading').classList.replace('d-none','d-flex')
-
-       var res = await fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealID}`);
-    var data = await res.json();
-    let meal = data.meals[0];
-moreInfo(meal)
-    document.getElementById('loading').classList.replace('d-flex','d-none')
-
-}
 
 
 async function moreInfo(meal){
@@ -556,7 +577,7 @@ async function moreInfo(meal){
         </ul>
         <h1>Tags:</h1>
         <ul class="tags">
-            <a href="${meal.strSource}"  class="source " target="_blank"><li>source</li></a>
+            <a href="${meal.strSource}"  class="source " target="_blank"  ><li>source</li></a>
             <a href="${meal.strYoutube}" class="yout " target="_blank"><li>youtube</li></a>
         </ul>
     </div>
@@ -632,7 +653,7 @@ async function filterByIngredient(ingredient) {
     meals.forEach(meal => {
         cartona += `
         <div class="col-md-3 col-sm-6 mb-4">
-             <div onclick="ingredDetails('${meal.idMeal}')" class="outer p-3">
+             <div onclick="getMealDetails('${meal.idMeal}')" class="outer p-3">
 
                 <div class="inner-food rounded-3">
                     <img src="${meal.strMealThumb}" alt="${meal.strMeal}" class="w-100">
@@ -649,16 +670,6 @@ async function filterByIngredient(ingredient) {
 
 
 
-async function ingredDetails(mealID){
-                    document.getElementById('loading').classList.replace('d-none','d-flex')
-
-    var res = await fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealID}`);
-    var data = await res.json();
-    var meals = data.meals;
-    getIngredDetails(meals);
-        document.getElementById('loading').classList.replace('d-flex','d-none')
-
-}
 
 function getIngredDetails(meals){
     const meal=meals[0]
